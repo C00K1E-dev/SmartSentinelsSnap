@@ -12704,7 +12704,7 @@ __metadata:
 "imagetracerjs@git+https://github.com/jankovicsandras/imagetracerjs.git":
   version: 1.2.6
   resolution: "imagetracerjs@https://github.com/jankovicsandras/imagetracerjs.git#commit=cb0c84a309df5e75614d3b5166cdc77a56f12a98"
-  checksum: f962db1bcf06ed65fceee2b85d0abfb25ad08d75a3e2c3d24e54589b1e15fb4ffffbcbff04ba07abd47e7dd54f13c06bee3b630b938a8b7cb09e15e66fc8a02c
+  checksum: 684047c78a86a0305dd37900f1500c144f28dd6d1a18d2227f8db1c26ae1fe0891435de4a2b7d57f69e71cfa1bfeb80c6f1599b93848890cd9058ef5a68470e1
   languageName: node
   linkType: hard
 
@@ -17141,7 +17141,7 @@ __metadata:
   resolution: "potrace@https://github.com/cancerberoSgx/node-potrace.git#commit=043879baa521223ee96d31369eabd482a6eb214a"
   dependencies:
     jimp: ^0.6.4
-  checksum: 236bc6c6621a262fcd4f71451f29c6531a65b9c0e85184f7b29f8cc19ad80113e7e6448fabac1e4b85d4cfd4f0a5b9f4c5b6c6e9f1423f73a38795b1792cafcd
+  checksum: aff1f6b0c600948aed58c49c57449e16ad470780f166c59cf0fc43834832022b5ff7a1ac170d638fb9d5c16568b98fabfc6690f15acbdde6e23f7ff881462767
   languageName: node
   linkType: hard
 
@@ -18269,36 +18269,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"root@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "root@workspace:."
-  dependencies:
-    "@lavamoat/allow-scripts": ^3.0.0
-    "@lavamoat/preinstall-always-fail": ^2.0.0
-    "@metamask/eslint-config": ^12.2.0
-    "@metamask/eslint-config-jest": ^12.1.0
-    "@metamask/eslint-config-nodejs": ^12.1.0
-    "@metamask/eslint-config-typescript": ^12.1.0
-    "@metamask/snaps-sdk": ^6.12.0
-    "@typescript-eslint/eslint-plugin": ^5.42.1
-    "@typescript-eslint/parser": ^5.42.1
-    eslint: ^8.45.0
-    eslint-config-prettier: ^8.5.0
-    eslint-plugin-import: ~2.26.0
-    eslint-plugin-jest: ^27.1.5
-    eslint-plugin-jsdoc: ^41.1.2
-    eslint-plugin-n: ^15.7.0
-    eslint-plugin-prettier: ^4.2.1
-    eslint-plugin-promise: ^6.1.1
-    gatsby-plugin-sharp: ^5.14.0
-    prettier: ^2.7.1
-    prettier-plugin-packagejson: ^2.2.18
-    sharp: ^0.32.6
-    svg-png-converter: ^0.0.9
-    typescript: ^4.7.4
-  languageName: unknown
-  linkType: soft
-
 "run-async@npm:^2.4.0":
   version: 2.4.1
   resolution: "run-async@npm:2.4.1"
@@ -18851,6 +18821,70 @@ __metadata:
   checksum: b5167a7142c1da704c0e3af85c402002b597081dd9575031a90b4f229ca5678e9a36e8a374f1814c8156a725d17008ae3bde63b92f9cfd132526379e580bec8b
   languageName: node
   linkType: hard
+
+"smartsentinels-alerts@workspace:packages/snap":
+  version: 0.0.0-use.local
+  resolution: "smartsentinels-alerts@workspace:packages/snap"
+  dependencies:
+    "@jest/globals": ^29.5.0
+    "@metamask/auto-changelog": ^3.4.4
+    "@metamask/eslint-config": ^12.2.0
+    "@metamask/eslint-config-jest": ^12.1.0
+    "@metamask/eslint-config-nodejs": ^12.1.0
+    "@metamask/eslint-config-typescript": ^12.1.0
+    "@metamask/snaps-cli": ^6.5.2
+    "@metamask/snaps-jest": ^8.7.0
+    "@metamask/snaps-sdk": ^6.10.0
+    "@types/react": 18.2.4
+    "@types/react-dom": 18.2.4
+    "@typescript-eslint/eslint-plugin": ^5.42.1
+    "@typescript-eslint/parser": ^5.42.1
+    eslint: ^8.45.0
+    eslint-config-prettier: ^8.5.0
+    eslint-plugin-import: ~2.26.0
+    eslint-plugin-jest: ^27.1.5
+    eslint-plugin-jsdoc: ^41.1.2
+    eslint-plugin-n: ^15.7.0
+    eslint-plugin-prettier: ^4.2.1
+    eslint-plugin-promise: ^6.1.1
+    jest: ^29.5.0
+    prettier: ^2.7.1
+    prettier-plugin-packagejson: ^2.2.11
+    rimraf: ^3.0.2
+    ts-jest: ^29.1.0
+    typescript: ^4.7.4
+  languageName: unknown
+  linkType: soft
+
+"smartsentinels-snap@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "smartsentinels-snap@workspace:."
+  dependencies:
+    "@lavamoat/allow-scripts": ^3.0.0
+    "@lavamoat/preinstall-always-fail": ^2.0.0
+    "@metamask/eslint-config": ^12.2.0
+    "@metamask/eslint-config-jest": ^12.1.0
+    "@metamask/eslint-config-nodejs": ^12.1.0
+    "@metamask/eslint-config-typescript": ^12.1.0
+    "@metamask/snaps-sdk": ^6.12.0
+    "@typescript-eslint/eslint-plugin": ^5.42.1
+    "@typescript-eslint/parser": ^5.42.1
+    eslint: ^8.45.0
+    eslint-config-prettier: ^8.5.0
+    eslint-plugin-import: ~2.26.0
+    eslint-plugin-jest: ^27.1.5
+    eslint-plugin-jsdoc: ^41.1.2
+    eslint-plugin-n: ^15.7.0
+    eslint-plugin-prettier: ^4.2.1
+    eslint-plugin-promise: ^6.1.1
+    gatsby-plugin-sharp: ^5.14.0
+    prettier: ^2.7.1
+    prettier-plugin-packagejson: ^2.2.18
+    sharp: ^0.32.6
+    svg-png-converter: ^0.0.9
+    typescript: ^4.7.4
+  languageName: unknown
+  linkType: soft
 
 "snake-case@npm:^3.0.4":
   version: 3.0.4
@@ -19845,40 +19879,6 @@ __metadata:
   checksum: b6937a38c80c7f84d9c11dd75e49d5c44f71d95e810a3250bd1f1797fc7117c57698204adf676b71497acc205d769d65c16ae8fa10afad832ae1322630aef10a
   languageName: node
   linkType: hard
-
-"smartsentinels-alerts@workspace:packages/snap":
-  version: 0.0.0-use.local
-  resolution: "smartsentinels-alerts@workspace:packages/snap"
-  dependencies:
-    "@jest/globals": ^29.5.0
-    "@metamask/auto-changelog": ^3.4.4
-    "@metamask/eslint-config": ^12.2.0
-    "@metamask/eslint-config-jest": ^12.1.0
-    "@metamask/eslint-config-nodejs": ^12.1.0
-    "@metamask/eslint-config-typescript": ^12.1.0
-    "@metamask/snaps-cli": ^6.5.2
-    "@metamask/snaps-jest": ^8.7.0
-    "@metamask/snaps-sdk": ^6.10.0
-    "@types/react": 18.2.4
-    "@types/react-dom": 18.2.4
-    "@typescript-eslint/eslint-plugin": ^5.42.1
-    "@typescript-eslint/parser": ^5.42.1
-    eslint: ^8.45.0
-    eslint-config-prettier: ^8.5.0
-    eslint-plugin-import: ~2.26.0
-    eslint-plugin-jest: ^27.1.5
-    eslint-plugin-jsdoc: ^41.1.2
-    eslint-plugin-n: ^15.7.0
-    eslint-plugin-prettier: ^4.2.1
-    eslint-plugin-promise: ^6.1.1
-    jest: ^29.5.0
-    prettier: ^2.7.1
-    prettier-plugin-packagejson: ^2.2.11
-    rimraf: ^3.0.2
-    ts-jest: ^29.1.0
-    typescript: ^4.7.4
-  languageName: unknown
-  linkType: soft
 
 "through2@npm:^2.0.0":
   version: 2.0.5
