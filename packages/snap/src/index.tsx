@@ -12,13 +12,14 @@ import CampaignDialog from './components/CampaignDialog';
 import type { Campaign } from './interfaces/component_interfaces';
 
 /**
- * Get connected wallet accounts.
+ * Get connected wallet accounts via the Snap ethereum provider.
  */
 async function getAccounts(): Promise<string[]> {
-  return (window as any).ethereum.request({
+  const accounts = await ethereum.request<string[]>({
     method: 'eth_requestAccounts',
     params: [],
   });
+  return accounts ?? [];
 }
 
 /**
@@ -100,7 +101,23 @@ export const onCronjob: OnCronjobHandler = async ({ request }) => {
       method: 'snap_notify',
       params: {
         type: 'inApp',
-        message: `${campaign.title}: ${campaign.message}`.slice(0, 50),
+        message: `${campaign.title}: ${campaign.message}`.slice(0, 80),
+        title: campaign.title,
+        content: (
+          <Box>
+            <Text fontWeight="bold">{campaign.message}</Text>
+            {campaign.description ? (
+              <Text>{campaign.description}</Text>
+            ) : null}
+            {campaign.sponsor ? (
+              <Text color="muted">Sponsored by {campaign.sponsor}</Text>
+            ) : null}
+          </Box>
+        ),
+        footerLink: {
+          text: campaign.action_label || 'Learn More',
+          href: link,
+        },
       },
     });
 
@@ -128,13 +145,14 @@ export const onInstall: OnInstallHandler = async () => {
       type: 'alert',
       content: (
         <Box>
-          <Heading>Welcome to SmartSentinels!</Heading>
+          <Heading>Welcome to SmartSentinels! 🛡️</Heading>
           <Text>
-            You'll receive campaign alerts, airdrop notifications, and
-            exclusive opportunities directly inside MetaMask.
+            Your wallet is now connected. You'll receive airdrop alerts,
+            campaign notifications, and exclusive opportunities directly
+            inside MetaMask.
           </Text>
           <Text>
-            {`${accounts.length} wallet${accounts.length > 1 ? 's' : ''} registered.`}
+            Open this snap anytime from Menu → Snaps to see active campaigns.
           </Text>
         </Box>
       ),

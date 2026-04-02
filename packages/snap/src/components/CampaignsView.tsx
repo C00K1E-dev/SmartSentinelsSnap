@@ -1,7 +1,8 @@
-import { Box, Heading, Divider, Text } from '@metamask/snaps-sdk/jsx';
+import { Box, Heading, Divider, Text, Icon, Image } from '@metamask/snaps-sdk/jsx';
 import { Campaign } from '../interfaces/component_interfaces';
 import CampaignBanner from './CampaignBanner';
 import CampaignCard from './CampaignCard';
+import banner from '../../images/banner.svg';
 
 const PRIORITY_TYPES = ['claim', 'airdrop', 'mint'];
 
@@ -15,7 +16,12 @@ export default function CampaignsView({
   if (campaigns === -1) {
     return (
       <Box>
-        <Text>Error loading campaigns. Please try again later.</Text>
+        <Image src={banner} />
+        <Box direction="horizontal" alignment="space-between">
+          <Heading>SmartSentinels</Heading>
+          <Icon name="warning" color="muted" />
+        </Box>
+        <Text color="error">Error loading campaigns. Please try again later.</Text>
       </Box>
     );
   }
@@ -23,8 +29,9 @@ export default function CampaignsView({
   if (campaigns === 0 || (typeof campaigns !== 'number' && campaigns.length === 0)) {
     return (
       <Box>
+        <Image src={banner} />
         <Heading>SmartSentinels</Heading>
-        <Text>
+        <Text color="muted">
           {`No active campaigns for ${accounts.length} wallet${accounts.length > 1 ? 's' : ''}`}
         </Text>
       </Box>
@@ -39,7 +46,6 @@ export default function CampaignsView({
     );
   }
 
-  // Split: priority campaigns get banners, rest get cards
   const priorityCampaigns = campaigns.filter((c) =>
     PRIORITY_TYPES.includes(c.campaign_type),
   );
@@ -47,19 +53,19 @@ export default function CampaignsView({
     (c) => !PRIORITY_TYPES.includes(c.campaign_type),
   );
 
+  const total = campaigns.length;
+
   return (
     <Box>
-      <Heading>SmartSentinels Campaigns</Heading>
-      <Text>{`${accounts.length} wallet${accounts.length > 1 ? 's' : ''} connected`}</Text>
+      <Image src={banner} />
+      <Text color="muted">
+        {`${total} campaign${total > 1 ? 's' : ''} · ${accounts.length} wallet${accounts.length > 1 ? 's' : ''}`}
+      </Text>
       <Divider />
 
       {priorityCampaigns.map((campaign) => (
         <CampaignBanner campaign={campaign} />
       ))}
-
-      {priorityCampaigns.length > 0 && otherCampaigns.length > 0 ? (
-        <Divider />
-      ) : null}
 
       {otherCampaigns.map((campaign) => (
         <CampaignCard campaign={campaign} />

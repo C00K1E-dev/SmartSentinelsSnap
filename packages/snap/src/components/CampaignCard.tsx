@@ -1,54 +1,42 @@
-import { Box, Card, Section, Link, Text, Bold } from '@metamask/snaps-sdk/jsx';
+import { Section, Text, Bold, Link, Heading, Box, Icon } from '@metamask/snaps-sdk/jsx';
 import { Campaign } from '../interfaces/component_interfaces';
 
 function formatDate(date: string | null): string {
   if (!date) return '';
   const d = new Date(date);
   return d.toLocaleDateString('en-US', {
-    month: '2-digit',
-    day: '2-digit',
-    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
   });
 }
 
-function actionLabelForType(campaign: Campaign): string {
-  return campaign.action_label || 'Learn More';
-}
-
 export default function CampaignCard({ campaign }: { campaign: Campaign }) {
-  const maxLen = 22;
-  const title =
-    campaign.title.length > maxLen
-      ? campaign.title.substring(0, maxLen) + '...'
-      : campaign.title;
-  const description =
-    (campaign.message || '').length > maxLen
-      ? campaign.message.substring(0, maxLen) + '...'
-      : campaign.message || '';
-
-  const endInfo = campaign.end_date
-    ? `Ends ${formatDate(campaign.end_date)}`
-    : '';
-
+  const label = campaign.action_label || 'Learn More';
   const link =
     campaign.action_url || campaign.url || 'https://smartsentinels.net';
 
+  const endInfo = campaign.end_date
+    ? ` · Ends ${formatDate(campaign.end_date)}`
+    : '';
+
   return (
-    <Box>
-      <Section>
-        <Card
-          title={title}
-          description={description}
-          value={endInfo}
-          extra={campaign.sponsor || ''}
-        />
-      </Section>
+    <Section>
+      <Box direction="horizontal" alignment="start">
+        <Icon name="notification" color="muted" size="md" />
+        <Heading size="sm">{campaign.title}</Heading>
+      </Box>
+      <Text>
+        <Bold>{campaign.message}</Bold>
+      </Text>
       {campaign.description ? (
-        <Text>
-          <Bold>{actionLabelForType(campaign)}:</Bold> {campaign.description}
+        <Text>{campaign.description}</Text>
+      ) : null}
+      {campaign.sponsor || campaign.end_date ? (
+        <Text color="muted">
+          {campaign.sponsor ? `By ${campaign.sponsor}` : ''}{endInfo}
         </Text>
       ) : null}
-      <Link href={link}>{actionLabelForType(campaign)}</Link>
-    </Box>
+      <Link href={link}>{label}</Link>
+    </Section>
   );
 }

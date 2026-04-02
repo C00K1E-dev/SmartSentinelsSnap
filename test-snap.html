@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartSentinels Snap – Test</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #e0e0e0; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .card { background: #1a1a2e; border: 1px solid #333; border-radius: 16px; padding: 40px; max-width: 480px; text-align: center; }
+    h1 { font-size: 1.5rem; margin-bottom: 8px; color: #00d4ff; }
+    p { color: #999; margin-bottom: 24px; font-size: 0.9rem; }
+    .status { margin: 16px 0; padding: 12px; border-radius: 8px; font-size: 0.85rem; }
+    .status.info { background: #1a2a3a; border: 1px solid #2a4a6a; }
+    .status.success { background: #1a3a1a; border: 1px solid #2a6a2a; color: #6f6; }
+    .status.error { background: #3a1a1a; border: 1px solid #6a2a2a; color: #f66; }
+    button { padding: 12px 28px; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; margin: 6px; transition: all 0.2s; }
+    button:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn-primary { background: #00d4ff; color: #000; font-weight: 600; }
+    .btn-primary:hover:not(:disabled) { background: #00b8e0; }
+    .btn-secondary { background: #333; color: #ccc; }
+    .btn-secondary:hover:not(:disabled) { background: #444; }
+    pre { background: #111; border: 1px solid #333; border-radius: 8px; padding: 12px; margin-top: 16px; text-align: left; font-size: 0.75rem; max-height: 300px; overflow: auto; white-space: pre-wrap; word-break: break-all; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>⚡ SmartSentinels Alerts</h1>
+    <p>Test your snap locally with MetaMask Flask</p>
+
+    <div id="status" class="status info">Click "Connect" to start</div>
+
+    <div>
+      <button class="btn-primary" id="connectBtn" onclick="connectSnap()">Connect &amp; Install Snap</button>
+    </div>
+    <div style="margin-top: 12px">
+      <button class="btn-secondary" id="campaignsBtn" onclick="findCampaigns()" disabled>Find Campaigns</button>
+      <button class="btn-secondary" id="homeBtn" onclick="openHome()" disabled>Open Snap Home</button>
+    </div>
+
+    <pre id="log" style="display:none"></pre>
+  </div>
+
+  <script>
+    const SNAP_ID = 'local:http://localhost:8080';
+    const statusEl = document.getElementById('status');
+    const logEl = document.getElementById('log');
+
+    function setStatus(msg, type = 'info') {
+      statusEl.textContent = msg;
+      statusEl.className = 'status ' + type;
+    }
+
+    function log(data) {
+      logEl.style.display = 'block';
+      logEl.textContent = typeof data === 'string' ? data : JSON.stringify(data, null, 2);
+    }
+
+    async function connectSnap() {
+      try {
+        setStatus('Requesting snap installation...', 'info');
+
+        const result = await window.ethereum.request({
+          method: 'wallet_requestSnaps',
+          params: { [SNAP_ID]: {} }
+        });
+
+        console.log('wallet_requestSnaps result:', result);
+        log(result);
+
+        if (result[SNAP_ID]) {
+          setStatus('Snap installed successfully!', 'success');
+          document.getElementById('campaignsBtn').disabled = false;
+          document.getElementById('homeBtn').disabled = false;
+        } else {
+          setStatus('Snap installation was rejected or failed', 'error');
+        }
+      } catch (err) {
+        console.error(err);
+        setStatus('Error: ' + err.message, 'error');
+        log(err.message);
+      }
+    }
+
+    async function findCampaigns() {
+      try {
+        setStatus('Calling findCampaigns...', 'info');
+
+        const result = await window.ethereum.request({
+          method: 'wallet_invokeSnap',
+          params: {
+            snapId: SNAP_ID,
+            request: { method: 'findCampaigns' }
+          }
+        });
+
+        console.log('findCampaigns result:', result);
+        log(result);
+        setStatus('Campaigns fetched! Check the result below.', 'success');
+      } catch (err) {
+        console.error(err);
+        setStatus('Error: ' + err.message, 'error');
+        log(err.message);
+      }
+    }
+
+    async function openHome() {
+      try {
+        setStatus('Opening snap home page in MetaMask...', 'info');
+        // The home page is triggered by MetaMask UI, not via RPC.
+        // Users open it by clicking the snap in MetaMask > Snaps list.
+        setStatus('Open MetaMask Flask → Menu → Snaps → SmartSentinels Alerts to see the home page', 'info');
+      } catch (err) {
+        setStatus('Error: ' + err.message, 'error');
+      }
+    }
+
+    // Check if MetaMask Flask is available
+    window.addEventListener('load', async () => {
+      if (typeof window.ethereum === 'undefined') {
+        setStatus('MetaMask Flask not detected. Please install it.', 'error');
+        document.getElementById('connectBtn').disabled = true;
+        return;
+      }
+
+      // Check if snap is already installed
+      try {
+        const snaps = await window.ethereum.request({ method: 'wallet_getSnaps' });
+        if (snaps[SNAP_ID]) {
+          setStatus('Snap already installed! Ready to test.', 'success');
+          document.getElementById('campaignsBtn').disabled = false;
+          document.getElementById('homeBtn').disabled = false;
+          log(snaps[SNAP_ID]);
+        }
+      } catch (e) {
+        // Not connected yet, that's fine
+      }
+    });
+  </script>
+</body>
+</html>
