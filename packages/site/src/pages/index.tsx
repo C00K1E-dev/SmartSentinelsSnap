@@ -4,7 +4,7 @@ import {
   ConnectButton,
   InstallFlaskButton,
   ReconnectButton,
-  FindBenefitsButton,
+  FindCampaignsButton,
   Card,
 } from '../components';
 import { defaultSnapOrigin } from '../config';
@@ -177,7 +177,7 @@ const Index = () => {
             description:
               'Discover active campaigns, airdrops, and exclusive opportunities for your wallets.',
             button: (
-              <FindBenefitsButton
+              <FindCampaignsButton
                 onClick={handleFindCampaignsButton}
                 disabled={false}
               />

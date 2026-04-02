@@ -95,7 +95,7 @@ export const ReconnectButton = (props: ComponentProps<typeof Button>) => {
   );
 };
 
-export const FindBenefitsButton = (props: ComponentProps<typeof Button>) => {
+export const FindCampaignsButton = (props: ComponentProps<typeof Button>) => {
   return <Button {...props}>Find Campaigns</Button>;
 };
 
