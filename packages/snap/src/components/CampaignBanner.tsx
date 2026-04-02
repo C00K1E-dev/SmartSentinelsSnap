@@ -3,7 +3,7 @@ import type { IconName as IconNameType } from '@metamask/snaps-sdk/jsx';
 import { Campaign } from '../interfaces/component_interfaces';
 
 const TYPE_ICON: Record<string, IconNameType> = {
-  airdrop: 'send-1',
+  airdrop: 'send',
   claim: 'received',
   mint: 'flash',
 };
