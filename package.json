@@ -1,0 +1,112 @@
+{
+  "name": "root",
+  "version": "0.1.5",
+  "private": true,
+  "description": "",
+  "homepage": "https://github.com/0xAskar/themiraclesnap.git#readme",
+  "bugs": {
+    "url": "hhttps://github.com/0xAskar/themiraclesnap.git/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xAskar/themiraclesnap.git"
+  },
+  "license": "(MIT-0 OR Apache-2.0)",
+  "author": "",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "yarn workspaces foreach --parallel --topological --verbose run build",
+    "lint": "yarn lint:eslint && yarn lint:misc --check",
+    "lint:eslint": "eslint . --cache --ext js,jsx,ts,tsx",
+    "lint:fix": "yarn lint:eslint --fix && yarn lint:misc --write",
+    "lint:misc": "prettier '**/*.json' '**/*.md' '!**/CHANGELOG.md' '**/*.yml' --ignore-path .gitignore",
+    "start": "yarn workspaces foreach --parallel --interlaced --verbose run start",
+    "test": "yarn workspace snap run test"
+  },
+  "files": [
+    "dist/",
+    "images/",
+    "snap.manifest.json"
+  ],
+  "devDependencies": {
+    "@lavamoat/allow-scripts": "^3.0.0",
+    "@lavamoat/preinstall-always-fail": "^2.0.0",
+    "@metamask/eslint-config": "^12.2.0",
+    "@metamask/eslint-config-jest": "^12.1.0",
+    "@metamask/eslint-config-nodejs": "^12.1.0",
+    "@metamask/eslint-config-typescript": "^12.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "@typescript-eslint/parser": "^5.42.1",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "~2.26.0",
+    "eslint-plugin-jest": "^27.1.5",
+    "eslint-plugin-jsdoc": "^41.1.2",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "prettier": "^2.7.1",
+    "prettier-plugin-packagejson": "^2.2.18",
+    "sharp": "^0.32.6",
+    "typescript": "^4.7.4"
+  },
+  "packageManager": "yarn@3.2.1",
+  "engines": {
+    "node": ">=18.6.0"
+  },
+  "lavamoat": {
+    "allowScripts": {
+      "@lavamoat/preinstall-always-fail": false,
+      "sharp": true,
+      "gatsby-plugin-sharp>gatsby": false,
+      "gatsby-plugin-sharp>gatsby>@parcel/cache>lmdb": false,
+      "gatsby-plugin-sharp>gatsby>@pmmmwh/react-refresh-webpack-plugin>core-js-pure": false,
+      "gatsby-plugin-sharp>gatsby>@pmmmwh/react-refresh-webpack-plugin>webpack-dev-server>chokidar>fsevents": false,
+      "gatsby-plugin-sharp>gatsby>@pmmmwh/react-refresh-webpack-plugin>webpack-dev-server>webpack>watchpack>watchpack-chokidar2>chokidar>fsevents": false,
+      "gatsby-plugin-sharp>gatsby>core-js": false,
+      "gatsby-plugin-sharp>gatsby>gatsby-cli": false,
+      "gatsby-plugin-sharp>gatsby>gatsby-telemetry": false,
+      "gatsby-plugin-sharp>gatsby>lmdb": false,
+      "gatsby-plugin-sharp>gatsby>lmdb>msgpackr>msgpackr-extract": false,
+      "gatsby-plugin-sharp>gatsby>memoizee>es5-ext": false,
+      "svg-png-converter>fabric>canvas": false,
+      "svg-png-converter>fabric>jsdom>ws>bufferutil": false,
+      "svg-png-converter>fabric>jsdom>ws>utf-8-validate": false,
+      "svg-png-converter>potrace>jimp>@jimp/custom>@jimp/core>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/custom>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/plugins>@jimp/plugin-blit>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/plugins>@jimp/plugin-blur>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/plugins>@jimp/plugin-color>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/plugins>@jimp/plugin-contain>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/plugins>@jimp/plugin-cover>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/plugins>@jimp/plugin-crop>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/plugins>@jimp/plugin-displace>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/plugins>@jimp/plugin-dither>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/plugins>@jimp/plugin-flip>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/plugins>@jimp/plugin-gaussian>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/plugins>@jimp/plugin-invert>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/plugins>@jimp/plugin-mask>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/plugins>@jimp/plugin-normalize>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/plugins>@jimp/plugin-print>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/plugins>@jimp/plugin-resize>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/plugins>@jimp/plugin-rotate>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/plugins>@jimp/plugin-scale>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/plugins>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/types>@jimp/bmp>@jimp/utils>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/types>@jimp/bmp>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/types>@jimp/gif>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/types>@jimp/jpeg>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/types>@jimp/png>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/types>@jimp/tiff>core-js": false,
+      "svg-png-converter>potrace>jimp>@jimp/types>core-js": false,
+      "svg-png-converter>potrace>jimp>core-js": false
+    }
+  },
+  "dependencies": {
+    "@metamask/snaps-sdk": "^6.12.0",
+    "gatsby-plugin-sharp": "^5.14.0",
+    "svg-png-converter": "^0.0.9"
+  }
+}

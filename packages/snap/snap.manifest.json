@@ -1,0 +1,31 @@
+{
+  "version": "0.1.5",
+  "description": "theMiracle Benefits Tracker integrates their API to showcase a user's benefits, perks, and rewards that pertains to their holdings",
+  "proposedName": "theMiracle Benefits Tracker",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0xAskar/themiraclesnap"
+  },
+  "source": {
+    "shasum": "B3IBDYp+iELMvK1ZxJnhTuBG8BhbHweLmE6GsU6HwOc=",
+    "location": {
+      "npm": {
+        "filePath": "dist/bundle.js",
+        "iconPath": "images/logo.svg",
+        "packageName": "themiracle-benefits-tracker",
+        "registry": "https://registry.npmjs.org/"
+      }
+    }
+  },
+  "initialPermissions": {
+    "snap_dialog": {},
+    "endowment:rpc": {
+      "dapps": true,
+      "snaps": false
+    },
+    "endowment:network-access": {},
+    "endowment:ethereum-provider": {},
+    "endowment:page-home": {}
+  },
+  "manifestVersion": "0.1"
+}
