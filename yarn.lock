@@ -3516,14 +3516,14 @@ __metadata:
   linkType: hard
 
 "@metamask/snaps-registry@npm:^3.2.2":
-  version: 3.2.2
-  resolution: "@metamask/snaps-registry@npm:3.2.2"
+  version: 3.3.0
+  resolution: "@metamask/snaps-registry@npm:3.3.0"
   dependencies:
-    "@metamask/superstruct": ^3.1.0
-    "@metamask/utils": ^10.0.0
+    "@metamask/superstruct": ^3.2.1
+    "@metamask/utils": ^11.4.0
     "@noble/curves": ^1.2.0
     "@noble/hashes": ^1.3.2
-  checksum: 5f92d1e4196f9980c54c616508f10196aafe4734ccb9058654f080b2964549fd916c7ffc57d02ad05ba7d89a110709f9ad716dcbebc28fdd29c1d75f1edc4e66
+  checksum: 87f3f9c756bb7671ea0173a550f0e4e47e372b3dc822a6e75626ddec0be59d1bf7c8abe345ff88255de4fa2224ede826d78c1d46109050b5b68d3c26481157a0
   languageName: node
   linkType: hard
 
@@ -3645,6 +3645,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@metamask/superstruct@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "@metamask/superstruct@npm:3.2.1"
+  checksum: 194e4afc4df89f347e4dd16db8f8dfcbf7990ff82169c3bd43b98ecff2f1ef09488b987af612cc1ea2689826e8460bb2b01e1a3a340383420115b3a90aa68465
+  languageName: node
+  linkType: hard
+
 "@metamask/utils@npm:^10.0.0":
   version: 10.0.0
   resolution: "@metamask/utils@npm:10.0.0"
@@ -3659,6 +3666,25 @@ __metadata:
     semver: ^7.5.4
     uuid: ^9.0.1
   checksum: b75679b78d3e084ed486d767fd5532b09527eb40e0cc5b080f5f0f1a620c68674cb662b1b3aa05eed8e1f024c08f8b7ae3c499a5185a32bea4c342874c529ba5
+  languageName: node
+  linkType: hard
+
+"@metamask/utils@npm:^11.4.0":
+  version: 11.11.0
+  resolution: "@metamask/utils@npm:11.11.0"
+  dependencies:
+    "@ethereumjs/tx": ^4.2.0
+    "@metamask/superstruct": ^3.1.0
+    "@noble/hashes": ^1.3.1
+    "@scure/base": ^1.1.3
+    "@types/debug": ^4.1.7
+    "@types/lodash": ^4.17.20
+    debug: ^4.3.4
+    lodash: ^4.17.21
+    pony-cause: ^2.1.10
+    semver: ^7.5.4
+    uuid: ^9.0.1
+  checksum: baf071b2e29ad1947794408f01861356199f24732dfd19e4b42e24f39e71b098768cf4fb2020466ab9a5c67e4ddde96b530a8cfa404a92d874b622a8b0d1a1e4
   languageName: node
   linkType: hard
 
@@ -5355,6 +5381,13 @@ __metadata:
   version: 4.14.195
   resolution: "@types/lodash@npm:4.14.195"
   checksum: 39b75ca635b3fa943d17d3d3aabc750babe4c8212485a4df166fe0516e39288e14b0c60afc6e21913cc0e5a84734633c71e617e2bd14eaa1cf51b8d7799c432e
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:^4.17.20":
+  version: 4.17.24
+  resolution: "@types/lodash@npm:4.17.24"
+  checksum: 2b254973145ecdf9b052d83f00ebaa111245f319d45b217c78f81cea8892fda81180fc749bd50a99c08f4e5efceb834c774d3f74153a50a9c4a28648343dc9f3
   languageName: node
   linkType: hard
 
