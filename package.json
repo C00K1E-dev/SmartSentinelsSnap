@@ -1,15 +1,15 @@
 {
-  "name": "root",
-  "version": "0.1.5",
+  "name": "smartsentinels-snap",
+  "version": "0.1.0",
   "private": true,
-  "description": "",
-  "homepage": "https://github.com/0xAskar/themiraclesnap.git#readme",
+  "description": "SmartSentinels MetaMask Snap — campaign & notification platform",
+  "homepage": "https://smartsentinels.net",
   "bugs": {
-    "url": "hhttps://github.com/0xAskar/themiraclesnap.git/issues"
+    "url": "https://github.com/SmartSentinels/smartsentinels-snap/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/0xAskar/themiraclesnap.git"
+    "url": "git+https://github.com/SmartSentinels/smartsentinels-snap.git"
   },
   "license": "(MIT-0 OR Apache-2.0)",
   "author": "",

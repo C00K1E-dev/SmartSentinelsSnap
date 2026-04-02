@@ -110,17 +110,17 @@ const Index = () => {
     ? isFlask
     : snapsDetected;
 
-  const handleFindBenefitsButton = async () => {
-    await invokeSnap({ method: 'findBenefits' });
+  const handleFindCampaignsButton = async () => {
+    await invokeSnap({ method: 'findCampaigns' });
   };
 
   return (
     <Container>
       <Heading>
-        Welcome to <Span>theMiracle</Span>
+        Welcome to <Span>SmartSentinels</Span>
       </Heading>
       <Subtitle>
-        Get started by connecting & clicking <code>Find Your Benefits</code>
+        Get started by connecting & clicking <code>Find Campaigns</code>
       </Subtitle>
       <CardContainer>
         {error && (
@@ -144,7 +144,7 @@ const Index = () => {
             content={{
               title: 'Connect',
               description:
-                'Get started by connecting to and installing the example snap.',
+                'Get started by connecting to and installing the SmartSentinels snap.',
               button: (
                 <ConnectButton
                   onClick={requestSnap}
@@ -173,12 +173,12 @@ const Index = () => {
         )}
         <Card
           content={{
-            title: 'Find Your Benefits',
+            title: 'Find Campaigns',
             description:
-              'Find all relevant benefits, perks, and rewards from your holdings with just one click.',
+              'Discover active campaigns, airdrops, and exclusive opportunities for your wallets.',
             button: (
               <FindBenefitsButton
-                onClick={handleFindBenefitsButton}
+                onClick={handleFindCampaignsButton}
                 disabled={false}
               />
             ),

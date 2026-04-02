@@ -10,11 +10,11 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Template Snap',
+        name: 'SmartSentinels Alerts',
         icon: 'src/assets/logo.svg',
         /* eslint-disable @typescript-eslint/naming-convention */
-        theme_color: '#6F4CFF',
-        background_color: '#FFFFFF',
+        theme_color: '#00D1FF',
+        background_color: '#0A0E17',
         /* eslint-enable @typescript-eslint/naming-convention */
         display: 'standalone',
       },

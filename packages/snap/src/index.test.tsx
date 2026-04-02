@@ -1,47 +1,39 @@
-import type { OnRpcRequestHandler, OnHomePageHandler } from '@metamask/snaps-sdk';
-import { Heading, Box, Text, Bold, Copyable} from '@metamask/snaps-sdk/jsx';
-import { Benefit } from './interfaces/component_interfaces';
-import BenefitsView from './components/BenefitsView';
-import BenefitsViewDialogPopup from './components/BenefitsViewDialogPopup';
-import { getBenefits } from './api/theMiracle';
+import type {
+  OnRpcRequestHandler,
+  OnHomePageHandler,
+  OnCronjobHandler,
+  OnInstallHandler,
+  OnUserInputHandler,
+} from '@metamask/snaps-sdk';
+import { Box, Text, Heading } from '@metamask/snaps-sdk/jsx';
+import { getCampaigns, registerWallet, markDelivered } from './api/smartsentinels';
+import CampaignsView from './components/CampaignsView';
+import CampaignDialog from './components/CampaignDialog';
+import type { Campaign } from './interfaces/component_interfaces';
 
-/**
- * Handle incoming JSON-RPC requests, sent through `wallet_invokeSnap`.
- *
- * @param args - The request handler args as object.
- * @param args.origin - The origin of the request, e.g., the website that
- * invoked the snap.
- * @param args.request - A validated JSON-RPC request object.
- * @returns The result of `snap_dialog`.
- * @throws If the request method is not valid for this snap.
- */
-export const onRpcRequest: OnRpcRequestHandler = async ({
-  origin,
-  request,
-}) => {
-  let accounts = await (window as any).ethereum.request({
-    "method": "eth_requestAccounts",
-    "params": [],
-   });
-  switch (request.method) {
-    case 'findBenefits':
-      const benefits = await getBenefits(accounts);
-      return BenefitsViewDialogPopup({benefits, origin, request, accounts});
-    default:
-      throw new Error('Method not found.');
-  }
-};
+describe('SmartSentinels Snap', () => {
+  it('should export onRpcRequest handler', async () => {
+    const { onRpcRequest } = await import('./index');
+    expect(onRpcRequest).toBeDefined();
+  });
 
+  it('should export onHomePage handler', async () => {
+    const { onHomePage } = await import('./index');
+    expect(onHomePage).toBeDefined();
+  });
 
-export const onHomePage: OnHomePageHandler = async () => {
-  let accounts = await (window as any).ethereum.request({
-    "method": "eth_requestAccounts",
-    "params": [],
-   });
-   const benefits = await getBenefits(accounts);
-  return {
-    content: (
-      <BenefitsView benefits={benefits} accounts={accounts}/>
-    ),
-  };
-};
+  it('should export onCronjob handler', async () => {
+    const { onCronjob } = await import('./index');
+    expect(onCronjob).toBeDefined();
+  });
+
+  it('should export onInstall handler', async () => {
+    const { onInstall } = await import('./index');
+    expect(onInstall).toBeDefined();
+  });
+
+  it('should export onUserInput handler', async () => {
+    const { onUserInput } = await import('./index');
+    expect(onUserInput).toBeDefined();
+  });
+});

@@ -1,10 +1,10 @@
 {
-  "name": "themiracle-benefits-tracker",
-  "version": "0.1.5",
-  "description": "theMiracle Benefits Tracker integrates their API to showcase a user's benefits, perks, and rewards that pertains to their holdings",
+  "name": "smartsentinels-alerts",
+  "version": "0.1.0",
+  "description": "The official SmartSentinels interface for MetaMask.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/0xAskar/themiraclesnap"
+    "url": "https://github.com/SmartSentinels/smartsentinels-snap"
   },
   "license": "(MIT-0 OR Apache-2.0)",
   "main": "./dist/bundle.js",

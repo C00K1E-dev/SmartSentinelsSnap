@@ -1,12 +1,11 @@
-# themiraclesnap
-!theMiracle Snap Logo
+# SmartSentinels Alerts
 
 # Overview
-theMiracle Snap is a MetaMask Snap that empowers users to effortlessly find and track their benefits, perks, and rewards directly associated with their cryptocurrency wallet holdings. By integrating with theMiracle's API, this Snap provides a seamless experience to manage and monitor the myriad benefits tied to your digital assets.
+SmartSentinels Alerts is a MetaMask Snap that delivers campaign notifications, airdrop alerts, and exclusive opportunities directly inside your MetaMask wallet. It connects to the SmartSentinels campaign backend to provide real-time updates about active campaigns relevant to your wallet holdings.
 
 ## Features
-- Benefit Tracking: View and manage all benefits, perks, and rewards related to your wallet holdings.
-- User-Friendly Interface: Intuitive UI built with React and styled-components for a seamless user experience.
-- Real-Time Updates: Fetch and display the latest benefits data directly from theMiracle's API.
-- MetaMask Integration: Fully compatible with MetaMask, leveraging MetaMask's Snap architecture for enhanced security and functionality.
-- Responsive Design: Optimized for both desktop and mobile devices.
+- Campaign Notifications: Receive alerts about airdrops, token claims, minting events, and launchpad rounds.
+- Interactive UI: Rich campaign cards with action buttons (Claim, Join, Mint) inside MetaMask.
+- Push Notifications: Cron-based checks every 30 minutes for new campaign opportunities.
+- MetaMask Integration: Fully compatible with MetaMask, leveraging Snap architecture for enhanced security.
+- Multi-Wallet Support: Tracks campaigns across all connected EVM wallets.

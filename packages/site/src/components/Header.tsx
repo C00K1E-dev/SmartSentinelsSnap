@@ -4,7 +4,6 @@ import { getThemePreference } from '../utils';
 import { HeaderButtons } from './Buttons';
 import { SnapLogo } from './SnapLogo';
 import { Toggle } from './Toggle';
-import { TheMiracle } from './TheMiracle';
 
 const HeaderWrapper = styled.header`
   display: flex;
@@ -47,8 +46,8 @@ export const Header = ({
   return (
     <HeaderWrapper>
       <LogoWrapper>
-        <TheMiracle size={36} />
-        <Title>theMiracle</Title>
+        <SnapLogo color={theme.colors.icon?.default} size={36} />
+        <Title>SmartSentinels</Title>
       </LogoWrapper>
       <RightContainer>
         <Toggle
