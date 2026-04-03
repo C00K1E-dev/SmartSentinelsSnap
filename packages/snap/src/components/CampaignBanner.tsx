@@ -1,17 +1,16 @@
 import { Section, Heading, Text, Bold, Icon, Link, Box, Image } from '@metamask/snaps-sdk/jsx';
-import { IconName } from '@metamask/snaps-sdk/jsx';
 import { Campaign } from '../interfaces/component_interfaces';
 
-const TYPE_ICON: Record<string, IconName> = {
-  airdrop: IconName.Send1,
-  claim: IconName.Received,
-  mint: IconName.Flash,
+const TYPE_ICON: Record<string, string> = {
+  airdrop: 'send',
+  claim: 'received',
+  mint: 'flash',
 };
 
 export default function CampaignBanner({ campaign }: { campaign: Campaign }) {
   const link =
     campaign.action_url || campaign.url || 'https://smartsentinels.net';
-  const iconName = TYPE_ICON[campaign.campaign_type] || IconName.Notification;
+  const iconName = TYPE_ICON[campaign.campaign_type] || 'notification';
 
   return (
     <Section>
@@ -21,7 +20,7 @@ export default function CampaignBanner({ campaign }: { campaign: Campaign }) {
         </Box>
       ) : null}
       <Box direction="horizontal" alignment="start">
-        <Icon name={iconName} color="primary" size="md" />
+        <Icon name={iconName as any} color="primary" size="md" />
         <Heading size="sm">{campaign.title}</Heading>
       </Box>
       <Text>
