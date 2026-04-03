@@ -19,7 +19,6 @@ export async function getCampaigns(
       const response = await fetch(url);
 
       if (!response.ok) {
-        console.log('Error fetching campaigns:', response.status);
         continue;
       }
 
@@ -37,8 +36,7 @@ export async function getCampaigns(
     }
 
     return allCampaigns;
-  } catch (error) {
-    console.log('Error fetching campaigns:', error);
+  } catch {
     return -1;
   }
 }
@@ -51,8 +49,7 @@ export async function registerWallet(address: string): Promise<boolean> {
       body: JSON.stringify({ walletAddress: address }),
     });
     return response.ok;
-  } catch (error) {
-    console.log('Error registering wallet:', error);
+  } catch {
     return false;
   }
 }
@@ -73,8 +70,7 @@ export async function markDelivered(
       }),
     });
     return response.ok;
-  } catch (error) {
-    console.log('Error marking delivery:', error);
+  } catch {
     return false;
   }
 }
