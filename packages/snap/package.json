@@ -4,8 +4,11 @@
   "description": "The official SmartSentinels interface for MetaMask.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SmartSentinels/smartsentinels-snap"
+    "url": "https://github.com/C00K1E-dev/SmartSentinelsSnap"
   },
+  "author": "SmartSentinels <office@smartsentinels.net>",
+  "homepage": "https://smartsentinels.net",
+  "keywords": ["metamask", "snap", "notifications", "campaigns", "airdrops", "smartsentinels"],
   "license": "(MIT-0 OR Apache-2.0)",
   "main": "./dist/bundle.js",
   "files": [

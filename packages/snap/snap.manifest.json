@@ -4,10 +4,10 @@
   "proposedName": "SmartSentinels Alerts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SmartSentinels/smartsentinels-snap"
+    "url": "https://github.com/C00K1E-dev/SmartSentinelsSnap"
   },
   "source": {
-    "shasum": "avMN+iC62F7vGqWyKWYf6od3M4PXH+uj+KlKBvrtntA=",
+    "shasum": "Ey11BO0aznlI9GNOvsYx4CsY/rxAZoLNEhm8jsWNuTg=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
