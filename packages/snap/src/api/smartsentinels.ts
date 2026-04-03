@@ -6,10 +6,15 @@ export async function getCampaigns(
   addresses: string[],
 ): Promise<Campaign[] | 0 | -1> {
   try {
+    // If no accounts available, use a zero address to fetch public campaigns
+    const wallets = addresses.length > 0
+      ? addresses
+      : ['0x0000000000000000000000000000000000000000'];
+
     const allCampaigns: Campaign[] = [];
     const seenIds = new Set<string>();
 
-    for (const address of addresses) {
+    for (const address of wallets) {
       const url = `${API_BASE}/api/snap/campaigns?wallet=${address.toLowerCase()}`;
       const response = await fetch(url);
 

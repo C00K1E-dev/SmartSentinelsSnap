@@ -12,24 +12,69 @@ import CampaignDialog from './components/CampaignDialog';
 import type { Campaign } from './interfaces/component_interfaces';
 
 /**
- * Get connected wallet accounts via the Snap ethereum provider.
+ * Get stored wallet accounts from snap state.
+ */
+async function getStoredAccounts(): Promise<string[]> {
+  const state = await snap.request({
+    method: 'snap_manageState',
+    params: { operation: 'get' },
+  }) as { accounts?: string[] } | null;
+  return state?.accounts ?? [];
+}
+
+/**
+ * Save wallet accounts to snap state.
+ */
+async function storeAccounts(accounts: string[]): Promise<void> {
+  await snap.request({
+    method: 'snap_manageState',
+    params: { operation: 'update', newState: { accounts } },
+  });
+}
+
+/**
+ * Get accounts — reads stored state first, falls back to eth_requestAccounts
+ * (which prompts once), then stores for future use.
  */
 async function getAccounts(): Promise<string[]> {
-  const accounts = await ethereum.request<string[]>({
-    method: 'eth_requestAccounts',
-    params: [],
-  });
-  return accounts ?? [];
+  // Try stored accounts first (no prompt)
+  const stored = await getStoredAccounts();
+  if (stored.length > 0) return stored;
+
+  // No stored accounts — request from MetaMask (prompts user once)
+  try {
+    const raw = await ethereum.request<string[]>({
+      method: 'eth_requestAccounts',
+      params: [],
+    }) ?? [];
+    const accounts = raw.filter((a): a is string => typeof a === 'string');
+
+    if (accounts.length > 0) {
+      await storeAccounts(accounts);
+    }
+    return accounts;
+  } catch {
+    return [];
+  }
 }
 
 /**
  * Handle incoming JSON-RPC requests from dapps via wallet_invokeSnap.
  */
 export const onRpcRequest: OnRpcRequestHandler = async ({ request }) => {
-  const accounts = await getAccounts();
-
   switch (request.method) {
     case 'findCampaigns': {
+      // Dapp passes connected accounts as params
+      const params = request.params as { accounts?: string[] } | undefined;
+      let accounts = params?.accounts ?? [];
+
+      // Store accounts from dapp for later use by onHomePage/onCronjob
+      if (accounts.length > 0) {
+        await storeAccounts(accounts);
+      } else {
+        accounts = await getAccounts();
+      }
+
       const campaigns = await getCampaigns(accounts);
 
       if (typeof campaigns === 'number') {
@@ -105,12 +150,12 @@ export const onCronjob: OnCronjobHandler = async ({ request }) => {
         title: campaign.title,
         content: (
           <Box>
-            <Text fontWeight="bold">{campaign.message}</Text>
+            <Text>{campaign.message}</Text>
             {campaign.description ? (
               <Text>{campaign.description}</Text>
             ) : null}
             {campaign.sponsor ? (
-              <Text color="muted">Sponsored by {campaign.sponsor}</Text>
+              <Text color="muted">Powered by {campaign.sponsor}</Text>
             ) : null}
           </Box>
         ),
@@ -118,11 +163,11 @@ export const onCronjob: OnCronjobHandler = async ({ request }) => {
           text: campaign.action_label || 'Learn More',
           href: link,
         },
-      },
+      } as any,
     });
 
     // Mark as delivered for the first connected account
-    if (accounts.length > 0) {
+    if (accounts[0]) {
       await markDelivered(accounts[0], campaign.id);
     }
   }
@@ -133,7 +178,16 @@ export const onCronjob: OnCronjobHandler = async ({ request }) => {
  * Registers the wallet in the SmartSentinels database.
  */
 export const onInstall: OnInstallHandler = async () => {
-  const accounts = await getAccounts();
+  const raw = await ethereum.request<string[]>({
+    method: 'eth_requestAccounts',
+    params: [],
+  }) ?? [];
+  const accounts = raw.filter((a): a is string => typeof a === 'string');
+
+  // Store accounts so onHomePage/onCronjob can use them
+  if (accounts.length > 0) {
+    await storeAccounts(accounts);
+  }
 
   for (const account of accounts) {
     await registerWallet(account);
@@ -173,7 +227,7 @@ export const onUserInput: OnUserInputHandler = async ({ id, event }) => {
     const campaignId = name.replace('action-', '');
     const accounts = await getAccounts();
 
-    if (accounts.length > 0) {
+    if (accounts[0]) {
       await markDelivered(accounts[0], campaignId, true);
     }
   }

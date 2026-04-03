@@ -17,6 +17,7 @@ export interface Campaign {
   description: string | null;
   url: string | null;
   image_url: string | null;
+  logo_svg: string | null;
   sponsor: string | null;
   campaign_type: CampaignType;
   action_label: string;

@@ -7,7 +7,7 @@
     "url": "https://github.com/SmartSentinels/smartsentinels-snap"
   },
   "source": {
-    "shasum": "HNA58AKEY40tgNbUs5svohi2LYpNKS/Jg5M45YyfSB8=",
+    "shasum": "xdIQTdbjKIURHtcDLOjYuDT/YyX6gWh1F90srlpiqbY=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
@@ -20,6 +20,7 @@
   "initialPermissions": {
     "snap_dialog": {},
     "snap_notify": {},
+    "snap_manageState": {},
     "endowment:rpc": {
       "dapps": true,
       "snaps": false

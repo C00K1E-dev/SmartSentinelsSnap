@@ -16,7 +16,7 @@ export default function CampaignDialog({ campaign }: { campaign: Campaign }) {
       ) : null}
       <Divider />
       {campaign.sponsor ? (
-        <Text>Sponsored by {campaign.sponsor}</Text>
+        <Text>Powered by {campaign.sponsor}</Text>
       ) : null}
       <Link href={link}>{campaign.action_label}</Link>
     </Box>

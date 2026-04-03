@@ -86,11 +86,14 @@
       try {
         setStatus('Calling findCampaigns...', 'info');
 
+        // Get connected accounts from dapp and pass to snap
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+
         const result = await window.ethereum.request({
           method: 'wallet_invokeSnap',
           params: {
             snapId: SNAP_ID,
-            request: { method: 'findCampaigns' }
+            request: { method: 'findCampaigns', params: { accounts } }
           }
         });
 
