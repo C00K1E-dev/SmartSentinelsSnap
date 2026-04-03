@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The official SmartSentinels interface for MetaMask.",
   "proposedName": "SmartSentinels Alerts",
   "repository": {
@@ -7,7 +7,7 @@
     "url": "https://github.com/C00K1E-dev/SmartSentinelsSnap"
   },
   "source": {
-    "shasum": "n9bnzS+e1y+rOTslgw9Q8ZcFqyQPOgKVVeQIH7TAkIw=",
+    "shasum": "AH4tfCMwR4yY5lfltena3XBZqeH+S8E3FTAFnOZk4NY=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
